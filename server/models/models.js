@@ -6,6 +6,7 @@ exports.register = function(server, options, next){
     server.expose('budgets', require('./budgets.js')(server));
     server.expose('booth_points', require('./booth_points.js')(server));
     server.expose('signs_history', require('./signs_history.js')(server));
+    server.expose('call_centers', require('./call_centers.js')(server));
 
   next();
 }

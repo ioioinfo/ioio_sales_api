@@ -73,6 +73,8 @@ server.register([
         register: require('./server/controller/booth_points_controller.js')
     },{
         register: require('./server/controller/signs_history_controller.js')
+    },{
+        register: require('./server/controller/call_centers_controller.js')
     },
 
 
