@@ -71,6 +71,8 @@ server.register([
         register: require('./server/controller/budgets_controller.js')
     },{
         register: require('./server/controller/booth_points_controller.js')
+    },{
+        register: require('./server/controller/signs_history_controller.js')
     },
 
 
