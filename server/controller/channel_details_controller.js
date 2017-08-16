@@ -2,7 +2,7 @@
 const uu_request = require('../utils/uu_request');
 const uuidV1 = require('uuid/v1');
 var eventproxy = require('eventproxy');
-var service_info = "edication service";
+var service_info = "sales service";
 var async = require('async');
 
 var do_get_method = function(url,cb){

@@ -40,10 +40,10 @@ var do_result = function(err,result,cb){
 exports.register = function(server, options, next) {
 
     server.route([
-        //查询所有渠道部门
+        //查询所有渠道
         {
             method: "GET",
-            path: '/get_departments',
+            path: '/get_points',
             handler: function(request, reply) {
 				var params = request.query.params;
                 var info = {};
@@ -53,39 +53,47 @@ exports.register = function(server, options, next) {
 				var info2 = {};
                 var ep =  eventproxy.create("rows", "num",
 					function(rows, num){
-
 					return reply({"success":true,"rows":rows,"num":num,"service_info":service_info});
 				});
                 //查询所有渠道部门
-                server.plugins['models'].channel_departments.get_departments(info,function(err,rows){
+                server.plugins['models'].booth_points.get_points(info,function(err,rows){
                     if (!err) {
 						ep.emit("rows", rows);
 					}else {
 						ep.emit("rows", []);
 					}
 				});
-				server.plugins['models'].channel_departments.account_departments(info,function(err,rows){
+				server.plugins['models'].booth_points.account_points(info,function(err,rows){
                     if (!err) {
 						ep.emit("num", rows[0].num);
 					}else {
 						ep.emit("num", 0);
 					}
 				});
+
             }
         },
         //新增
         {
             method: 'POST',
-            path: '/save_department',
+            path: '/save_point',
             handler: function(request, reply){
-                var name = request.payload.name;
-                var code = request.payload.code;
-                var source_level = request.payload.source_level;
-                if (!name || !code || !source_level) {
+                var point = request.payload.point;
+                point = JSON.parse(point);
+                if (!point.name || !point.code || !point.address ||
+                !point.province || !point.city || !point.district) {
                     return reply({"success":false,"message":"params wrong","service_info":service_info});
                 }
+                // var point ={
+                //     "name":"人名广场",
+                //     "code":"people_park",
+                //     "address":"地铁二号线",
+                //     "province":"上海",
+                //     "city":"上海",
+                //     "district":"上海"
+                // }
 
-                server.plugins['models'].channel_departments.save_department(name, code, source_level, function(err,result){
+                server.plugins['models'].booth_points.save_point(point, function(err,result){
                     if (result.affectedRows>0) {
                         return reply({"success":true,"service_info":service_info});
                     }else {
@@ -98,14 +106,14 @@ exports.register = function(server, options, next) {
         //删除
         {
             method: 'POST',
-            path: '/delete_department',
+            path: '/delete_point',
             handler: function(request, reply){
                 var id = request.payload.id;
                 if (!id) {
                     return reply({"success":false,"message":"id null","service_info":service_info});
                 }
 
-                server.plugins['models'].channel_departments.delete_department(id, function(err,result){
+                server.plugins['models'].booth_points.delete_point(id, function(err,result){
                     if (result.affectedRows>0) {
                         return reply({"success":true,"service_info":service_info});
                     }else {
@@ -114,10 +122,10 @@ exports.register = function(server, options, next) {
                 });
             }
         },
-        //查询渠道部门
+        //查询渠道
         {
             method: "GET",
-            path: '/search_department_byId',
+            path: '/search_point_byId',
             handler: function(request, reply) {
                 var id = request.query.id;
                 if (!id) {
@@ -130,7 +138,7 @@ exports.register = function(server, options, next) {
                     return reply({"success":true,"rows":rows,"service_info":service_info});
                 });
                 //查询渠道部门
-                server.plugins['models'].channel_departments.search_department_byId(id,function(err,rows){
+                server.plugins['models'].booth_points.search_point_byId(id,function(err,rows){
                     if (!err) {
                         ep.emit("rows", rows);
                     }else {
@@ -140,21 +148,19 @@ exports.register = function(server, options, next) {
 
             }
         },
-        //更新部门
+        //更新渠道
         {
             method: 'POST',
-            path: '/update_department',
+            path: '/update_point',
             handler: function(request, reply){
-                var id = request.payload.id;
-                var name = request.payload.name;
-                var code = request.payload.code;
-                var source_level = request.payload.source_level;
-
-                if (!id || !name || !code || !source_level) {
+                var point = request.payload.point;
+                point = JSON.parse(point);
+                if (!point.name || !point.code || !point.address ||
+                !point.province || !point.city || !point.district || !point.id) {
                     return reply({"success":false,"message":"params wrong","service_info":service_info});
                 }
 
-                server.plugins['models'].channel_departments.update_department(id, name, code, source_level, function(err,result){
+                server.plugins['models'].booth_points.update_point(point, function(err,result){
                     if (result.affectedRows>0) {
                         return reply({"success":true,"service_info":service_info});
                     }else {
@@ -171,5 +177,5 @@ exports.register = function(server, options, next) {
 }
 
 exports.register.attributes = {
-    name: "channel_departments_controller"
+    name: "booth_points_controller"
 };
