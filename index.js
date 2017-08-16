@@ -65,6 +65,8 @@ server.register([
         register: require('./server/models/models.js')
     }, {
         register: require('./server/controller/channel_departments_controller.js')
+    },{
+        register: require('./server/controller/channel_details_controller.js')
     },
 
 

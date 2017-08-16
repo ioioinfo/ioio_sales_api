@@ -88,7 +88,7 @@ var channel_departments = function(server) {
 				cb(false,results);
 			});
 		},
-		//删除课程
+		//删除
 		delete_department:function(id, cb){
 			var query = `update channel_departments set flag = 1, updated_at = now()
 				where id = ? and flag =0
