@@ -9,6 +9,8 @@ exports.register = function(server, options, next){
     server.expose('call_centers', require('./call_centers.js')(server));
     server.expose('threads', require('./threads.js')(server));
     server.expose('threads_demands', require('./threads_demands.js')(server));
+    server.expose('allocations', require('./allocations.js')(server));
+
 
   next();
 }
