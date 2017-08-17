@@ -77,6 +77,8 @@ server.register([
         register: require('./server/controller/call_centers_controller.js')
     },{
         register: require('./server/controller/threads_controller.js')
+    },{
+        register: require('./server/controller/threads_demands_controller.js')
     },
 
 

@@ -8,6 +8,7 @@ exports.register = function(server, options, next){
     server.expose('signs_history', require('./signs_history.js')(server));
     server.expose('call_centers', require('./call_centers.js')(server));
     server.expose('threads', require('./threads.js')(server));
+    server.expose('threads_demands', require('./threads_demands.js')(server));
 
   next();
 }
