@@ -10,6 +10,7 @@ exports.register = function(server, options, next){
     server.expose('threads', require('./threads.js')(server));
     server.expose('threads_demands', require('./threads_demands.js')(server));
     server.expose('allocations', require('./allocations.js')(server));
+    server.expose('allocation_histories', require('./allocation_histories.js')(server));
 
 
   next();

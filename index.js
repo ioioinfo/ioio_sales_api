@@ -81,6 +81,8 @@ server.register([
         register: require('./server/controller/threads_demands_controller.js')
     },{
         register: require('./server/controller/allocations_controller.js')
+    },{
+        register: require('./server/controller/allocation_histories_controller.js')
     },
 
 
