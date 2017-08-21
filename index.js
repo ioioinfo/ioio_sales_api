@@ -89,6 +89,8 @@ server.register([
         register: require('./server/controller/appointment_records_controller.js')
     },{
         register: require('./server/controller/students_controller.js')
+    },{
+        register: require('./server/controller/teachers_controller.js')
     },
 
 

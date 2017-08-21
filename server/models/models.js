@@ -15,6 +15,7 @@ exports.register = function(server, options, next){
     server.expose('appointment_records', require('./appointment_records.js')(server));
     //server.expose('connection_records', require('./connection_records.js')(server));
     server.expose('threads_students_infos', require('./threads_students_infos.js')(server));
+    server.expose('threads_teachers_demands', require('./threads_teachers_demands.js')(server));
 
 
   next();
