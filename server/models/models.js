@@ -12,6 +12,7 @@ exports.register = function(server, options, next){
     server.expose('allocations', require('./allocations.js')(server));
     server.expose('allocation_histories', require('./allocation_histories.js')(server));
     server.expose('intentions_customers', require('./intentions_customers.js')(server));
+    server.expose('appointment_records', require('./appointment_records.js')(server));
 
 
   next();

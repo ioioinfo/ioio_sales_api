@@ -85,6 +85,8 @@ server.register([
         register: require('./server/controller/allocation_histories_controller.js')
     },{
         register: require('./server/controller/intentions_customers_controller.js')
+    },{
+        register: require('./server/controller/appointment_records_controller.js')
     },
 
 
