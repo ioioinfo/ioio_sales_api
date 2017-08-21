@@ -11,6 +11,7 @@ exports.register = function(server, options, next){
     server.expose('threads_demands', require('./threads_demands.js')(server));
     server.expose('allocations', require('./allocations.js')(server));
     server.expose('allocation_histories', require('./allocation_histories.js')(server));
+    server.expose('intentions_customers', require('./intentions_customers.js')(server));
 
 
   next();
