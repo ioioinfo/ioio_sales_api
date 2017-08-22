@@ -91,10 +91,9 @@ server.register([
         register: require('./server/controller/students_controller.js')
     },{
         register: require('./server/controller/teachers_controller.js')
+    },{
+        register: require('./server/controller/achievements_controller.js')
     },
-
-
-
 
 ], function () {
     //Start the server
