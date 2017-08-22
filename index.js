@@ -99,6 +99,8 @@ server.register([
         register: require('./server/controller/visit_records_controller.js')
     },{
         register: require('./server/controller/contracts_controller.js')
+    },{
+        register: require('./server/controller/contracts_details_controller.js')
     },
 
 

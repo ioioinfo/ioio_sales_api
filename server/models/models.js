@@ -20,6 +20,7 @@ exports.register = function(server, options, next){
     server.expose('campuses', require('./campuses.js')(server));
     server.expose('visit_records', require('./visit_records.js')(server));
     server.expose('contracts', require('./contracts.js')(server));
+    server.expose('contracts_details', require('./contracts_details.js')(server));
 
 
   next();
