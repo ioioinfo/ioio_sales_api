@@ -17,7 +17,7 @@ exports.register = function(server, options, next){
     server.expose('threads_students_infos', require('./threads_students_infos.js')(server));
     server.expose('threads_teachers_demands', require('./threads_teachers_demands.js')(server));
     server.expose('threads_follow_achievements', require('./threads_follow_achievements.js')(server));
-
+    server.expose('campuses', require('./campuses.js')(server));
 
   next();
 }

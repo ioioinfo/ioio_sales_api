@@ -93,7 +93,11 @@ server.register([
         register: require('./server/controller/teachers_controller.js')
     },{
         register: require('./server/controller/achievements_controller.js')
+    },{
+        register: require('./server/controller/campuses_controller.js')
     },
+
+
 
 ], function () {
     //Start the server
