@@ -95,6 +95,8 @@ server.register([
         register: require('./server/controller/achievements_controller.js')
     },{
         register: require('./server/controller/campuses_controller.js')
+    },{
+        register: require('./server/controller/visit_records_controller.js')
     },
 
 
