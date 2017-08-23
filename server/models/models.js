@@ -21,6 +21,7 @@ exports.register = function(server, options, next){
     server.expose('visit_records', require('./visit_records.js')(server));
     server.expose('contracts', require('./contracts.js')(server));
     server.expose('contracts_details', require('./contracts_details.js')(server));
+    server.expose('prepayments', require('./prepayments.js')(server));
 
 
   next();
