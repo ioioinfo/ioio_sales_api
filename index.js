@@ -103,7 +103,10 @@ server.register([
         register: require('./server/controller/contracts_details_controller.js')
     },{
         register: require('./server/controller/prepayments_controller.js')
+    },{
+        register: require('./server/controller/connection_ways_controller.js')
     },
+
 
 
 
