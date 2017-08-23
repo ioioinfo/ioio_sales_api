@@ -49,7 +49,7 @@ server.register([
 	{
         register: require("good"),
         options: {
-            ops: {interval: 5000},
+            ops: false,
             reporters: {
                 myConsoleReporter: [{
                     module: 'good-console'
@@ -87,6 +87,26 @@ server.register([
         register: require('./server/controller/intentions_customers_controller.js')
     },{
         register: require('./server/controller/appointment_records_controller.js')
+    },{
+        register: require('./server/controller/students_controller.js')
+    },{
+        register: require('./server/controller/teachers_controller.js')
+    },{
+        register: require('./server/controller/achievements_controller.js')
+    },{
+        register: require('./server/controller/campuses_controller.js')
+    },{
+        register: require('./server/controller/visit_records_controller.js')
+    },{
+        register: require('./server/controller/contracts_controller.js')
+    },{
+        register: require('./server/controller/contracts_details_controller.js')
+    },{
+        register: require('./server/controller/prepayments_controller.js')
+    },{
+        register: require('./server/controller/connection_ways_controller.js')
+    },{
+        register: require('./server/controller/connection_records_controller.js')
     },
 
 
