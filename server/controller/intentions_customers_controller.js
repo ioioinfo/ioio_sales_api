@@ -97,7 +97,7 @@ exports.register = function(server, options, next) {
             handler: function(request, reply){
                 var customer = request.payload.customer;
                 customer = JSON.parse(customer);
-                if (!customer.thread_id || !customer.phone || !customer.name || !customer.sex || !customer.relationship) {
+                if (!customer.thread_id || !customer.phone || !customer.name || !customer.sex || !customer.relationship || !customer.email) {
                     return reply({"success":false,"message":"params wrong","service_info":service_info});
                 }
                 // var customer ={
@@ -186,7 +186,7 @@ exports.register = function(server, options, next) {
             handler: function(request, reply){
                 var customer = request.payload.customer;
                 customer = JSON.parse(customer);
-                if (!customer.thread_id || !customer.phone || !customer.name || !customer.sex || !customer.relationship || !customer.id) {
+                if (!customer.thread_id || !customer.phone || !customer.name || !customer.sex || !customer.relationship || !customer.id || !customer.email) {
                     return reply({"success":false,"message":"params wrong","service_info":service_info});
                 }
 
