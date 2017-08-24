@@ -24,7 +24,7 @@ exports.register = function(server, options, next){
     server.expose('connection_ways', require('./connection_ways.js')(server));
     server.expose('connection_records', require('./connection_records.js')(server));
     server.expose('cpq', require('./cpq.js')(server));
-
+    server.expose('cpq_details', require('./cpq_details.js')(server));
 
 
   next();
