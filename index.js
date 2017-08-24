@@ -107,6 +107,8 @@ server.register([
         register: require('./server/controller/connection_ways_controller.js')
     },{
         register: require('./server/controller/connection_records_controller.js')
+    },{
+        register: require('./server/controller/cpq_controller.js')
     },
 
 

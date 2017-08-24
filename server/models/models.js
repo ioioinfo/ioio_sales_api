@@ -13,7 +13,6 @@ exports.register = function(server, options, next){
     server.expose('allocation_histories', require('./allocation_histories.js')(server));
     server.expose('intentions_customers', require('./intentions_customers.js')(server));
     server.expose('appointment_records', require('./appointment_records.js')(server));
-    //server.expose('connection_records', require('./connection_records.js')(server));
     server.expose('threads_students_infos', require('./threads_students_infos.js')(server));
     server.expose('threads_teachers_demands', require('./threads_teachers_demands.js')(server));
     server.expose('threads_follow_achievements', require('./threads_follow_achievements.js')(server));
@@ -24,6 +23,9 @@ exports.register = function(server, options, next){
     server.expose('prepayments', require('./prepayments.js')(server));
     server.expose('connection_ways', require('./connection_ways.js')(server));
     server.expose('connection_records', require('./connection_records.js')(server));
+    server.expose('cpq', require('./cpq.js')(server));
+
+
 
   next();
 }
