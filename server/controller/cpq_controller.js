@@ -100,14 +100,14 @@ exports.register = function(server, options, next) {
                 if (!cpq.customer_id || !cpq.amount || !cpq.quantity || !cpq.discount || !cpq.actual_price || !cpq.person_id) {
                     return reply({"success":false,"message":"params wrong","service_info":service_info});
                 }
-                var cpq ={
-                    "customer_id":1,
-                    "amount":2000.10,
-                    "quantity":100,
-                    "discount":1,
-                    "actual_price":2000.10,
-                    "person_id":1
-                }
+                // var cpq ={
+                //     "customer_id":1,
+                //     "amount":2000.10,
+                //     "quantity":100,
+                //     "discount":1,
+                //     "actual_price":2000.10,
+                //     "person_id":1
+                // }
 
                 server.plugins['models'].cpq.save_cpq(cpq, function(err,result){
                     if (result.affectedRows>0) {
