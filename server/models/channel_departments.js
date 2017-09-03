@@ -5,7 +5,7 @@ var channel_departments = function(server) {
 	return {
 		//获得所有渠道部门
 		get_departments : function(info, cb){
-            var query = `select id, name, code, source_level, created_at, updated_at
+            var query = `select id, name, code, source_level, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from channel_departments where flag = 0
             `;
 
@@ -76,7 +76,7 @@ var channel_departments = function(server) {
 		//查询渠道部门
 		search_department_byId : function(id, cb){
 			var query = `select id, name, code, source_level,
-			created_at, updated_at, flag
+			DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from channel_departments where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

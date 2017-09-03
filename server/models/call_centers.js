@@ -6,7 +6,7 @@ var call_centers = function(server) {
 		//获得所有预算
 		get_call_centers : function(info, cb){
             var query = `select id, school_id, telephone, responsible_person,
-            created_at, updated_at
+            DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from call_centers where flag = 0
             `;
 
@@ -77,7 +77,7 @@ var call_centers = function(server) {
 		//查询预算
 		search_center_byId : function(id, cb){
 			var query = `select id, school_id, telephone, responsible_person,
-            created_at, updated_at, flag
+            DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from call_centers where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

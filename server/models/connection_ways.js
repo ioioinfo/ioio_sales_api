@@ -5,7 +5,7 @@ var connection_ways = function(server) {
 	return {
 		//获得所有预算
 		get_connection_ways : function(info, cb){
-            var query = `select id, name, created_at, updated_at
+            var query = `select id, name, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from connection_ways where flag = 0
             `;
 
@@ -60,7 +60,7 @@ var connection_ways = function(server) {
 
 		//查询预算
 		search_by_id : function(id, cb){
-			var query = `select id, name, created_at, updated_at, flag
+			var query = `select id, name, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from connection_ways where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

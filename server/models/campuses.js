@@ -6,7 +6,7 @@ var campuses = function(server) {
 		//获得所有渠道部门
 		get_campuses : function(info, cb){
             var query = `select id, name, code, location, province, city, district, photo, responsible_person,
-			created_at, updated_at
+			DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from campuses where flag = 0
             `;
 
@@ -82,7 +82,7 @@ var campuses = function(server) {
 		//查询渠道
 		search_campuse_byId : function(id, cb){
 			var query = `select id, name, code, location, province, city, district, photo,
-            responsible_person, created_at, updated_at, flag
+            responsible_person, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from campuses where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

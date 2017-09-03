@@ -6,7 +6,7 @@ var contracts_details = function(server) {
 	return {
 		//获得所有预算
 		get_details : function(info, cb){
-            var query = `select id, contract_id, product_id, quantity, total_price, created_at, updated_at
+            var query = `select id, contract_id, product_id, quantity, total_price, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from contracts_details where flag = 0
             `;
 
@@ -74,7 +74,7 @@ var contracts_details = function(server) {
 		},
 		//查询预算
 		search_detail_by_id : function(id, cb){
-			var query = `select id, contract_id, product_id, quantity, total_price, created_at, updated_at, flag
+			var query = `select id, contract_id, product_id, quantity, total_price, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from contracts_details where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

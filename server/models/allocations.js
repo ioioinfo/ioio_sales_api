@@ -5,7 +5,7 @@ var allocations = function(server) {
 	return {
 		//获得所有预算
 		get_allocations : function(info, cb){
-            var query = `select id, thread_id, person_id1, person_id2, department_id1,department_id2, created_at, updated_at
+            var query = `select id, thread_id, person_id1, person_id2, department_id1,department_id2, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from allocations where flag = 0
             `;
 
@@ -76,7 +76,7 @@ var allocations = function(server) {
 		},
 		//查询预算
 		search_allocation_byId : function(id, cb){
-			var query = `select id, thread_id, person_id1, person_id2, department_id1, department_id2, created_at, updated_at, flag
+			var query = `select id, thread_id, person_id1, person_id2, department_id1, department_id2, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from allocations where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

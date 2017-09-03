@@ -7,7 +7,7 @@ var threads_follow_achievements = function(server) {
 		get_achievements : function(info, cb){
             var query = `select id, thread_id, phone, promoter_id, choose_id, school_id,
 			visit_type, other_recommend, origin_source, master, temp_promoter_id, point_id,
-			marketing_master, marketing_activity, recommend_student, mark, created_at, updated_at
+			marketing_master, marketing_activity, recommend_student, mark, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from threads_follow_achievements where flag = 0
             `;
 
@@ -94,7 +94,7 @@ var threads_follow_achievements = function(server) {
 		search_achievement_by_id : function(id, cb){
 			var query = `select id, thread_id, phone, promoter_id, choose_id, school_id,
 			visit_type, other_recommend, origin_source, master, temp_promoter_id, point_id,
-			marketing_master, marketing_activity, recommend_student, mark, created_at, updated_at, flag
+			marketing_master, marketing_activity, recommend_student, mark, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from threads_follow_achievements where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

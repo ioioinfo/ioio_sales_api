@@ -6,7 +6,7 @@ var booth_points = function(server) {
 		//获得所有预算
 		get_points : function(info, cb){
             var query = `select id, name,  code,  address,  province,  city,
-            district, created_at, updated_at
+            district, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from booth_points where flag = 0
             `;
 
@@ -81,7 +81,7 @@ var booth_points = function(server) {
 		//查询预算
 		search_point_byId : function(id, cb){
 			var query = `select id, name,  code,  address,
-            province, city, district, created_at, updated_at, flag
+            province, city, district, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from booth_points where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

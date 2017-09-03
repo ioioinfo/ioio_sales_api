@@ -5,7 +5,7 @@ var budgets = function(server) {
 	return {
 		//获得所有预算
 		get_budgets : function(info, cb){
-            var query = `select id, name, channel_id, employees_cost, locations_cost, materials_cost, medias_cost, created_at, updated_at
+            var query = `select id, name, channel_id, employees_cost, locations_cost, materials_cost, medias_cost, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from budgets where flag = 0
             `;
 
@@ -75,7 +75,7 @@ var budgets = function(server) {
 		},
 		//查询预算
 		search_budget_byId : function(id, cb){
-			var query = `select id, name, channel_id, employees_cost, locations_cost, materials_cost, medias_cost, created_at, updated_at, flag
+			var query = `select id, name, channel_id, employees_cost, locations_cost, materials_cost, medias_cost, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from budgets where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

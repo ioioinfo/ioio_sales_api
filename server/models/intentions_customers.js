@@ -5,7 +5,7 @@ var intentions_customers = function(server) {
 	return {
 		//获得所有预算
 		get_customers : function(info, cb){
-            var query = `select id, thread_id, phone, email, name, sex, state, relationship, created_at, updated_at
+            var query = `select id, thread_id, phone, email, name, sex, state, relationship, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from intentions_customers where flag = 0
             `;
 
@@ -76,7 +76,7 @@ var intentions_customers = function(server) {
 		},
 		//查询预算
 		search_customer_by_id : function(id, cb){
-			var query = `select id, thread_id, phone, email, name, sex, relationship, state, created_at, updated_at, flag
+			var query = `select id, thread_id, phone, email, name, sex, relationship, state, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from intentions_customers where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

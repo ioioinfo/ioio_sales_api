@@ -6,7 +6,7 @@ var threads_demands = function(server) {
 		//获得所有预算
 		get_demands : function(info, cb){
             var query = `select id, thread_id, training_goal, disadvantage, learning_time, intention_city, intention_school, intention_level, visit_time, intention_product, source_type, phone,
-            created_at, updated_at
+            DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from threads_demands where flag = 0
             `;
 
@@ -86,7 +86,7 @@ var threads_demands = function(server) {
 		},
 		//查询预算
 		search_demand_byId : function(id, cb){
-			var query = `select id, thread_id, training_goal, disadvantage, learning_time, intention_city, intention_school, intention_level, visit_time, intention_product, source_type, phone, created_at, updated_at, flag
+			var query = `select id, thread_id, training_goal, disadvantage, learning_time, intention_city, intention_school, intention_level, visit_time, intention_product, source_type, phone, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from threads_demands where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {
@@ -112,7 +112,7 @@ var threads_demands = function(server) {
 				cb(false,results);
 			});
 		},
-        
+
 
 
 

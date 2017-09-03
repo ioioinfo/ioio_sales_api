@@ -7,7 +7,7 @@ var threads_students_infos = function(server) {
 		get_students : function(info, cb){
             var query = `select id, thread_id, phone, student_name, sex, birthday,
             hobby, school_type, is_foreign_teacher, training_experience, training_type,
-            training_way, learning_stage, age_stage, person_character, created_at, updated_at
+            training_way, learning_stage, age_stage, person_character, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from threads_students_infos where flag = 0
             `;
 
@@ -89,7 +89,7 @@ var threads_students_infos = function(server) {
 		search_student_by_id : function(id, cb){
 			var query = `select id, thread_id, phone, student_name, sex, birthday,
       hobby, school_type, is_foreign_teacher, training_experience, training_type,
-      training_way, learning_stage, age_stage, person_character, created_at, updated_at, flag
+      training_way, learning_stage, age_stage, person_character, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from threads_students_infos where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

@@ -6,7 +6,7 @@ var visit_records = function(server) {
 		//获得所有预算
 		get_visit_records : function(info, cb){
             var query = `select id, customer_id, name, phone, sex, relationship,
-            visit_date, reception_person, school, created_at, updated_at
+            visit_date, reception_person, school, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from visit_records where flag = 0
             `;
 
@@ -80,7 +80,7 @@ var visit_records = function(server) {
 		//查询预算
 		search_visit_by_id : function(id, cb){
 			var query = `select id, customer_id, name, phone, sex, relationship,
-            visit_date, reception_person, school, created_at, updated_at, flag
+            visit_date, reception_person, school, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from visit_records where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

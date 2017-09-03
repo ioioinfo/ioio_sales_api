@@ -6,7 +6,7 @@ var threads = function(server) {
 		//获得所有预算
 		get_threads : function(info, cb){
             var query = `select id, name, sex, phone, address, channel_id,  state,
-            created_at, updated_at
+            DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from threads where flag = 0
             `;
 
@@ -78,7 +78,7 @@ var threads = function(server) {
 		//查询预算
 		search_thread_byId : function(id, cb){
 			var query = `select id, name, sex, phone, address, channel_id,
-            state, created_at, updated_at, flag
+            state, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from threads where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

@@ -6,7 +6,7 @@ var cpq = function(server) {
 		//获得所有预算
 		get_cpqs : function(info, cb){
             var query = `select id, customer_id, amount, quantity, discount,
-            actual_price, person_id, created_at, updated_at
+            actual_price, person_id, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from cpq where flag = 0
             `;
 
@@ -80,7 +80,7 @@ var cpq = function(server) {
 		//查询预算
 		search_cpq_by_id : function(id, cb){
 			var query = `select id, customer_id, amount, quantity, discount,
-            actual_price, person_id, created_at, updated_at, flag
+            actual_price, person_id, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from cpq where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

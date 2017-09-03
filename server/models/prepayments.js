@@ -5,7 +5,7 @@ var prepayments = function(server) {
 	return {
 		//获得所有预算
 		get_prepayments : function(info, cb){
-            var query = `select id, customer_id, person_id, amount, state, created_at, updated_at
+            var query = `select id, customer_id, person_id, amount, state, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from prepayments where flag = 0
             `;
 
@@ -73,7 +73,7 @@ var prepayments = function(server) {
 		},
 		//查询预算
 		search_prepayment_by_id : function(id, cb){
-			var query = `select id, customer_id, person_id, amount, state, created_at, updated_at, flag
+			var query = `select id, customer_id, person_id, amount, state, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from prepayments where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

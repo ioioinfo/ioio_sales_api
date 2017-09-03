@@ -6,7 +6,7 @@ var channel_details = function(server) {
 		//获得所有渠道部门
 		get_channels : function(info, cb){
             var query = `select id, name, code, department_id, successful_rate,
-			created_at, updated_at
+			DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from channel_details where flag = 0
             `;
 
@@ -77,7 +77,7 @@ var channel_details = function(server) {
 		//查询渠道
 		search_channel_byId : function(id, cb){
 			var query = `select id, name, code, department_id,successful_rate,
-			created_at, updated_at, flag
+			DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from channel_details where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

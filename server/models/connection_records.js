@@ -6,7 +6,7 @@ var connection_records = function(server) {
 		//获得所有预算
 		get_threads_customers : function(info, cb){
             var query = `select id, thread_id, phone, state, way, call_in_time,
-            call_time, email, message, created_at, updated_at
+            call_time, email, message, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from connection_records where flag = 0 and thread_id is not null
             `;
 
@@ -44,7 +44,7 @@ var connection_records = function(server) {
 
         get_intentions_customers : function(info, cb){
             var query = `select id, customer_id, phone, state, way, call_in_time,
-            call_time, email, message, created_at, updated_at
+            call_time, email, message, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from connection_records where flag = 0 and customer_id is not null
             `;
 
@@ -83,7 +83,7 @@ var connection_records = function(server) {
 		//查询预算
 		search_threads_record: function(id, cb){
 			var query = `select id, thread_id, phone, state, way, call_in_time,
-            call_time, email, message, created_at, updated_at, flag
+            call_time, email, message, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from connection_records where flag = 0 and id = ? and thread_id is not null
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {
@@ -97,7 +97,7 @@ var connection_records = function(server) {
 		},
         search_intentions_record: function(id, cb){
 			var query = `select id, customer_id, phone, state, way, call_in_time,
-            call_time, email, message, created_at, updated_at, flag
+            call_time, email, message, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from connection_records where flag = 0 and id = ? and customer_id is not null
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

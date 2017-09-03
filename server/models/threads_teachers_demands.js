@@ -6,7 +6,7 @@ var threads_teachers_demands = function(server) {
 		//获得所有预算
 		get_teachers : function(info, cb){
             var query = `select id, thread_id, nationality, pronunciation, sex,
-            phone, created_at, updated_at
+            phone, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from threads_teachers_demands where flag = 0
             `;
 
@@ -81,7 +81,7 @@ var threads_teachers_demands = function(server) {
 		//查询预算
 		search_teacher_by_id : function(id, cb){
 			var query = `select id, thread_id, nationality, pronunciation, sex,
-            phone, created_at, updated_at, flag
+            phone, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from threads_teachers_demands where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {

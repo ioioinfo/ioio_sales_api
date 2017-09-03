@@ -6,7 +6,7 @@ var contracts = function(server) {
 		//获得所有预算
 		get_contracts : function(info, cb){
             var query = `select id, customer_id, amount, quantity, discount,
-            actual_price, person_id, school_id, state, created_at, updated_at
+            actual_price, person_id, school_id, state, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at
             from contracts where flag = 0
             `;
 
@@ -80,7 +80,7 @@ var contracts = function(server) {
 		//查询预算
 		search_contract_by_id : function(id, cb){
 			var query = `select id, customer_id, amount, quantity, discount,
-            actual_price, person_id, school_id, state, created_at, updated_at, flag
+            actual_price, person_id, school_id, state, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')created_at, updated_at, flag
 			from contracts where flag = 0 and id = ?
 			`;
 			server.plugins['mysql'].query(query,[id],function(err, results) {
